@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجامعة التقنية الشمالية - برنامج اختبارات الأمن السيبراني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 4px solid #4caf50;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4caf50;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .title h1 {
+            color: #1a237e;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .title p {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: #4caf50;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f8e9 100%);
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .section-card h3 {
+            color: #1a237e;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            max-width: 900px;
+            margin: 30px auto;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1a237e 0%, #4caf50 100%);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            max-height: calc(90vh - 100px);
+        }
+
+        /* اختبار MCQ */
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .question-number {
+            background: #1a237e;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .options-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 18px 25px;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option-btn:hover {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+
+        .option-btn.selected {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+        .option-btn.correct {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        .option-btn.incorrect {
+            background: #ffcdd2;
+            border-color: #f44336;
+            color: #c62828;
+        }
+
+        .option-letter {
+            background: #1a237e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .test-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .control-btn.secondary {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+        }
+
+        /* نتيجة الاختبار */
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid #4caf50;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .score-percentage {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .result-details {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+            text-align: right;
+        }
+
+        .result-details h4 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* تمرين التوصيل */
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .matching-column {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            min-height: 400px;
+        }
+
+        .matching-column h3 {
+            color: #1a237e;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .matching-item {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            cursor: grab;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .matching-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .matching-item.dragging {
+            opacity: 0.5;
+        }
+
+        .matching-item.matched {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        .matching-result {
+            background: #e8f5e9;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+            border: 2px solid #4caf50;
+        }
+
+        .matching-result h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        /* عرض المحتوى */
+        .content-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .content-header {
+            color: #1a237e;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4caf50;
+        }
+
+        .terms-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .term-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border-right: 5px solid #4caf50;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .term-item h4 {
+            color: #1a237e;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .term-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .term-definition {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-right: 3px solid #2e7d32;
+        }
+
+        /* التنقل السريع */
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .title p {
+                font-size: 1rem;
+            }
+            
+            .sections-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .modal-content {
+                margin: 15px;
+                max-height: 95vh;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .matching-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="title">
+                <h1>الجامعة التقنية الشمالية</h1>
+                <p>برنامج اختبارات الأمن السيبراني باللغة الإنجليزية</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sections-grid">
+            <div class="section-card" onclick="openSection('mcq-test')">
+                <div class="section-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>اختبار MCQ عشوائي</h3>
+                <p>اختبار متعدد الخيارات (10 أسئلة) مع تصحيح فوري</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('matching-exercise')">
+                <div class="section-icon">
+                    <i class="fas fa-random"></i>
+                </div>
+                <h3>تمرين التوصيل</h3>
+                <p>وصل الكلمات مع التعريفات المناسبة لها</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('lecture-content')">
+                <div class="section-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>محتوى المحاضرة</h3>
+                <p>عرض جميع الكلمات والتعريفات من المحاضرة الأولى</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('progress')">
+                <div class="section-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>تقدم المذاكرة</h3>
+                <p>تتبع أدائك في الاختبارات والتمارين</p>
+            </div>
+        </div>
+
+        <div class="quick-nav">
+            <button class="nav-btn" onclick="openSection('mcq-test')">بدء اختبار MCQ</button>
+            <button class="nav-btn" onclick="openSection('matching-exercise')">بدء تمرين التوصيل</button>
+            <button class="nav-btn" onclick="openSection('lecture-content')">مراجعة المحتوى</button>
+        </div>
+    </div>
+
+    <div id="section-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">القسم</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات المحاضرة الأولى
+        const lectureTerms = [
+            {
+                word: "Patch",
+                letter: "c",
+                definition: "An update or change to an operating system or application",
+                arabicDefinition: "تحديث أو تغيير يُجرى على نظام التشغيل أو على تطبيق"
+            },
+            {
+                word: "Cyberattack",
+                letter: "e",
+                definition: "an attempt by hackers to damage or destroy a computer network or system",
+                arabicDefinition: "محاولة يقوم بها المخترقون لإلحاق الضرر أو تدمير شبكة أو نظام حاسوبي"
+            },
+            {
+                word: "Password",
+                letter: "a",
+                definition: "a string of characters that allows access to a computer system or service",
+                arabicDefinition: "سلسلة من الأحرف تستخدم السماح بالدخول إلى نظام حاسوبي أو خدمة"
+            },
+            {
+                word: "Malicious",
+                letter: "f",
+                definition: "characterized by malice; intending or intended to do harm",
+                arabicDefinition: "يتصف بالخبث؛ يهدف أو ينوي الحاق الضرر"
+            },
+            {
+                word: "Domain",
+                letter: "i",
+                definition: "an area of territory owned or controlled by a particular ruler or government",
+                arabicDefinition: "منطقة أو أرض مملوكة أو مسيطر عليها من قبل حاكم معيّن أو حكومة"
+            },
+            {
+                word: "Bug",
+                letter: "g",
+                definition: "an error, flaw or fault in a computer program or system that causes it to produce an incorrect or unexpected result",
+                arabicDefinition: "خطأ أو عيب في برنامج أو نظام حاسوبي يؤدي إلى ظهور نتيجة غير صحيحة أو غير متوقعة"
+            },
+            {
+                word: "Cybersecurity",
+                letter: "d",
+                definition: "the state of being protected against the criminal or unauthorized use of electronic data, or the measures taken to achieve this",
+                arabicDefinition: "حالة الحماية من الاستخدام الإجرامي أو غير المصرح به للبيانات الإلكترونية، أو الإجراءات المتحدة لتحقيق ذلك"
+            },
+            {
+                word: "Spyware",
+                letter: "j",
+                definition: "software that enables a user to obtain covert information about another's computer activities by transmitting data covertly from their hard drive",
+                arabicDefinition: "برنامج يتيح للمستخدم الحصول على معلومات سرية عن نشاطات جهاز شخص آخر من خلال نقل البيانات بشكل خفي من القرص الصلب الخاص به"
+            },
+            {
+                word: "Security control",
+                letter: "h",
+                definition: "Anything used as part of a security response strategy which addresses a threat in order to reduce risk",
+                arabicDefinition: "أي شيء يستخدم ضمن إستراتيجية الاستجابة الأمنية لمعالجة تهديد بهدف تقليل المخاطر"
+            },
+            {
+                word: "Privacy",
+                letter: "b",
+                definition: "the state of being free from public attention",
+                arabicDefinition: "حالة كون الشخص بعيداً عن لفت الانتباه العام أو المراقبة"
+            }
+        ];
+
+        // أسئلة MCQ
+        const mcqQuestions = [
+            {
+                question: "What is a 'Patch' in cybersecurity?",
+                options: [
+                    "A type of malicious software",
+                    "A security protocol",
+                    "An update or fix for software",
+                    "A type of encryption"
+                ],
+                correct: 2,
+                explanation: "A patch is a small file downloaded to a device to fix a problem, improve performance, or update software."
+            },
+            {
+                question: "What does a 'Cyberattack' refer to?",
+                options: [
+                    "A security update",
+                    "A type of antivirus software",
+                    "An attempt by hackers to damage or destroy a computer system",
+                    "A backup procedure"
+                ],
+                correct: 2,
+                explanation: "A cyberattack is an attempt by hackers to infiltrate, damage, or steal information from a system or network."
+            },
+            {
+                question: "Which of the following best defines 'Password'?",
+                options: [
+                    "A type of hardware device",
+                    "A string of characters that allows access to a system",
+                    "A network protocol",
+                    "A security certificate"
+                ],
+                correct: 1,
+                explanation: "A password is a string of characters (numbers/letters/symbols) that allows you to access a device, site, or service."
+            },
+            {
+                question: "What does 'Malicious' mean in cybersecurity context?",
+                options: [
+                    "Helpful or beneficial",
+                    "Intending to do harm",
+                    "Outdated or old",
+                    "Complex or difficult"
+                ],
+                correct: 1,
+                explanation: "Malicious describes software or people with intent to cause harm or infiltrate systems."
+            },
+            {
+                question: "What is a 'Domain' in computing?",
+                options: [
+                    "A type of virus",
+                    "An error in code",
+                    "A website name like google.com",
+                    "A security control"
+                ],
+                correct: 2,
+                explanation: "A domain is a website name like google.com. It refers to an area controlled by a particular entity."
+            },
+            {
+                question: "What is a 'Bug' in software?",
+                options: [
+                    "A security feature",
+                    "An error that causes incorrect results",
+                    "A type of malware",
+                    "A programming language"
+                ],
+                correct: 1,
+                explanation: "A bug is an error, flaw, or fault in a computer program that causes it to produce incorrect or unexpected results."
+            },
+            {
+                question: "What does 'Cybersecurity' involve?",
+                options: [
+                    "Only antivirus software",
+                    "Protecting devices and data from cyberattacks",
+                    "Only network management",
+                    "Only data backup"
+                ],
+                correct: 1,
+                explanation: "Cybersecurity involves protecting devices and data from electronic attacks and preventing unauthorized use."
+            },
+            {
+                question: "What is 'Spyware'?",
+                options: [
+                    "Software that protects your privacy",
+                    "Software that gathers information without your knowledge",
+                    "A type of firewall",
+                    "Software that speeds up your computer"
+                ],
+                correct: 1,
+                explanation: "Spyware is software that infiltrates your device and collects information without your knowledge, sending it to another party."
+            },
+            {
+                question: "What are 'Security controls'?",
+                options: [
+                    "Only passwords",
+                    "Measures used to protect systems and reduce risks",
+                    "Only firewalls",
+                    "Only encryption tools"
+                ],
+                correct: 1,
+                explanation: "Security controls are any steps or tools used to protect systems and reduce risks, like firewalls, passwords, and encryption."
+            },
+            {
+                question: "What does 'Privacy' mean?",
+                options: [
+                    "Sharing all information publicly",
+                    "Being free from surveillance or interference",
+                    "Having strong passwords",
+                    "Using antivirus software"
+                ],
+                correct: 1,
+                explanation: "Privacy is the state of being free from surveillance or interference, keeping personal information away from others."
+            }
+        ];
+
+        // حالة التطبيق
+        let currentSection = '';
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let testSubmitted = false;
+        let matchedPairs = [];
+        let score = 0;
+
+        // فتح قسم
+        function openSection(section) {
+            currentSection = section;
+            const modal = document.getElementById('section-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            switch(section) {
+                case 'mcq-test':
+                    modalTitle.textContent = 'اختبار MCQ عشوائي';
+                    startMCQTest();
+                    break;
+                case 'matching-exercise':
+                    modalTitle.textContent = 'تمرين التوصيل';
+                    startMatchingExercise();
+                    break;
+                case 'lecture-content':
+                    modalTitle.textContent = 'محتوى المحاضرة الأولى';
+                    showLectureContent();
+                    break;
+                case 'progress':
+                    modalTitle.textContent = 'تقدم المذاكرة';
+                    showProgress();
+                    break;
+            }
+        }
+
+        // إغلاق النافذة
+        function closeModal() {
+            const modal = document.getElementById('section-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            resetTest();
+        }
+
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('section-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // بدء اختبار MCQ
+        function startMCQTest() {
+            currentQuestion = 0;
+            userAnswers = new Array(mcqQuestions.length).fill(-1);
+            testSubmitted = false;
+            score = 0;
+            
+            // خلط الأسئلة عشوائياً
+            shuffleArray(mcqQuestions);
+            showQuestion();
+        }
+
+        // خلط المصفوفة
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // عرض السؤال الحالي
+        function showQuestion() {
+            const modalBody = document.getElementById('modal-body');
+            
+            if (currentQuestion >= mcqQuestions.length) {
+                showTestResults();
+                return;
+            }
+            
+            const question = mcqQuestions[currentQuestion];
+            const questionNumber = currentQuestion + 1;
+            
+            let optionsHTML = '';
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            
+            question.options.forEach((option, index) => {
+                const isSelected = userAnswers[currentQuestion] === index;
+                const isCorrect = testSubmitted && index === question.correct;
+                const isIncorrect = testSubmitted && userAnswers[currentQuestion] === index && userAnswers[currentQuestion] !== question.correct;
+                
+                let className = 'option-btn';
+                if (isSelected) className += ' selected';
+                if (isCorrect) className += ' correct';
+                if (isIncorrect) className += ' incorrect';
+                
+                optionsHTML += `
+                    <button class="${className}" onclick="selectAnswer(${index})" ${testSubmitted ? 'disabled' : ''}>
+                        <div class="option-letter">${optionLetters[index]}</div>
+                        <div style="flex: 1; text-align: right;">${option}</div>
+                    </button>
+                `;
+            });
+            
+            modalBody.innerHTML = `
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">سؤال ${questionNumber} من ${mcqQuestions.length}</div>
+                        <div style="color: #666;">الدرجة: 1</div>
+                    </div>
+                    
+                    <div class="question-text">${question.question}</div>
+                    
+                    <div class="options-list">
+                        ${optionsHTML}
+                    </div>
+                    
+                    ${testSubmitted ? `
+                        <div class="result-details" style="margin-top: 25px;">
+                            <h4>${userAnswers[currentQuestion] === question.correct ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}</h4>
+                            <p style="color: #666; line-height: 1.7;">${question.explanation}</p>
+                        </div>
+                    ` : ''}
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn secondary" onclick="prevQuestion()" ${currentQuestion === 0 ? 'disabled style="opacity:0.5"' : ''}>
+                        <i class="fas fa-arrow-right"></i> السؤال السابق
+                    </button>
+                    
+                    ${testSubmitted ? 
+                        `<button class="control-btn" onclick="nextQuestion()">
+                            ${currentQuestion < mcqQuestions.length - 1 ? 'السؤال التالي <i class="fas fa-arrow-left"></i>' : 'عرض النتيجة النهائية'}
+                        </button>` 
+                        : 
+                        `<button class="control-btn" onclick="submitAnswer()">
+                            ${currentQuestion < mcqQuestions.length - 1 ? 'تأكيد والانتقال للسؤال التالي' : 'إنهاء الاختبار وعرض النتيجة'}
+                        </button>`
+                    }
+                </div>
+                
+                <div style="text-align: center; margin-top: 25px;">
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        ${mcqQuestions.map((q, index) => {
+                            let bgColor = '#e0e0e0';
+                            if (userAnswers[index] !== -1 && !testSubmitted) bgColor = '#4caf50';
+                            if (testSubmitted) {
+                                if (userAnswers[index] === mcqQuestions[index].correct) bgColor = '#4caf50';
+                                else bgColor = '#f44336';
+                            }
+                            
+                            return `<div style="width: 35px; height: 35px; border-radius: 50%; background: ${bgColor}; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer;" onclick="goToQuestion(${index})">${index+1}</div>`;
+                        }).join('')}
+                    </div>
+                    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px;">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <div style="width: 15px; height: 15px; border-radius: 50%; background: #e0e0e0;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">لم يتم الإجابة</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <div style="width: 15px; height: 15px; border-radius: 50%; background: #4caf50;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">تمت الإجابة</span>
+                        </div>
+                        ${testSubmitted ? `
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 15px; height: 15px; border-radius: 50%; background: #f44336;"></div>
+                                <span style="color: #666; font-size: 0.9rem;">إجابة خاطئة</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // اختيار إجابة
+        function selectAnswer(answerIndex) {
+            if (testSubmitted) return;
+            userAnswers[currentQuestion] = answerIndex;
+            showQuestion();
+        }
+
+        // تأكيد الإجابة
+        function submitAnswer() {
+            if (userAnswers[currentQuestion] === -1) {
+                alert('الرجاء اختيار إجابة قبل المتابعة');
+                return;
+            }
+            
+            if (currentQuestion < mcqQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                testSubmitted = true;
+                calculateScore();
+                showTestResults();
+            }
+        }
+
+        // الانتقال للسؤال التالي
+        function nextQuestion() {
+            if (currentQuestion < mcqQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showTestResults();
+            }
+        }
+
+        // العودة للسؤال السابق
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // الانتقال لسؤال محدد
+        function goToQuestion(index) {
+            currentQuestion = index;
+            showQuestion();
+        }
+
+        // حساب الدرجة
+        function calculateScore() {
+            score = 0;
+            mcqQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    score++;
+                }
+            });
+        }
+
+        // عرض نتيجة الاختبار
+        function showTestResults() {
+            const modalBody = document.getElementById('modal-body');
+            const percentage = Math.round((score / mcqQuestions.length) * 100);
+            
+            let resultMessage = '';
+            if (percentage >= 90) resultMessage = 'ممتاز! أداء رائع';
+            else if (percentage >= 80) resultMessage = 'جيد جداً! أحسنت';
+            else if (percentage >= 70) resultMessage = 'جيد! يمكنك التحسين';
+            else if (percentage >= 60) resultMessage = 'مقبول! تحتاج للمزيد من المذاكرة';
+            else resultMessage = 'ضعيف! يجب مراجعة المحتوى';
+            
+            modalBody.innerHTML = `
+                <div class="result-card">
+                    <h3 style="color: #1a237e; margin-bottom: 25px;">نتيجة اختبار MCQ</h3>
+                    
+                    <div class="score-circle">
+                        <div class="score-percentage">${percentage}%</div>
+                        <div class="score-label">${score}/${mcqQuestions.length}</div>
+                    </div>
+                    
+                    <h4 style="color: #2e7d32; margin-bottom: 15px; font-size: 1.4rem;">${resultMessage}</h4>
+                    
+                    <div class="result-details">
+                        <h4>تفاصيل النتيجة:</h4>
+                        
+                        ${mcqQuestions.map((question, index) => {
+                            const isCorrect = userAnswers[index] === question.correct;
+                            return `
+                                <div class="detail-item">
+                                    <div style="color: ${isCorrect ? '#2e7d32' : '#c62828'};">
+                                        ${isCorrect ? '✓' : '✗'} سؤال ${index + 1}
+                                    </div>
+                                    <div style="font-weight: ${isCorrect ? '600' : '400'}; color: ${isCorrect ? '#2e7d32' : '#c62828'}">
+                                        ${isCorrect ? 'صحيح' : 'خطأ'}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn secondary" onclick="startMCQTest()">
+                        <i class="fas fa-redo"></i> إعادة الاختبار
+                    </button>
+                    <button class="control-btn" onclick="openSection('lecture-content')">
+                        <i class="fas fa-book"></i> مراجعة المحتوى
+                    </button>
+                    <button class="control-btn" onclick="closeModal()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                </div>
+            `;
+        }
+
+        // بدء تمرين التوصيل
+        function startMatchingExercise() {
+            matchedPairs = [];
+            const shuffledTerms = shuffleArray([...lectureTerms]);
+            const shuffledDefinitions = shuffleArray([...lectureTerms.map(term => ({
+                definition: term.definition,
+                arabicDefinition: term.arabicDefinition,
+                correctWord: term.word,
+                letter: term.letter
+            }))]);
+            
+            const modalBody = document.getElementById('modal-body');
+            
+            let wordsHTML = '';
+            let definitionsHTML = '';
+            
+            shuffledTerms.forEach((term, index) => {
+                const isMatched = matchedPairs.find(pair => pair.word === term.word);
+                wordsHTML += `
+                    <div class="matching-item ${isMatched ? 'matched' : ''}" 
+                         id="word-${index}" 
+                         draggable="true"
+                         ondragstart="dragWord(event, '${term.word}')"
+                         data-word="${term.word}">
+                        <h4>${term.word}</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">الحرف: ${term.letter}</p>
+                    </div>
+                `;
+            });
+            
+            shuffledDefinitions.forEach((def, index) => {
+                const isMatched = matchedPairs.find(pair => pair.definition === def.definition);
+                definitionsHTML += `
+                    <div class="matching-item ${isMatched ? 'matched' : ''}" 
+                         id="def-${index}"
+                         ondragover="allowDrop(event)"
+                         ondrop="dropDefinition(event, '${def.correctWord}', '${def.definition}', '${def.letter}')">
+                        <h4>(${def.letter}) ${def.arabicDefinition}</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">${def.definition.substring(0, 60)}...</p>
+                    </div>
+                `;
+            });
+            
+            modalBody.innerHTML = `
+                <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 1.1rem;">
+                    اسحب كل كلمة إلى تعريفها الصحيح. الكلمات: (${shuffledTerms.map(t => t.word).join(', ')})
+                </p>
+                
+                <div class="matching-container">
+                    <div class="matching-column">
+                        <h3>الكلمات</h3>
+                        ${wordsHTML}
+                    </div>
+                    
+                    <div class="matching-column">
+                        <h3>التعريفات</h3>
+                        ${definitionsHTML}
+                    </div>
+                </div>
+                
+                <div id="matching-result" class="matching-result" style="display: ${matchedPairs.length === lectureTerms.length ? 'block' : 'none'};">
+                    <h4>مبروك! لقد أكملت التمرين بنجاح</h4>
+                    <p>لقد وصلت جميع الكلمات مع تعاريفها الصحيحة</p>
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn secondary" onclick="checkMatching()">
+                        <i class="fas fa-check-circle"></i> التحقق من الإجابات
+                    </button>
+                    <button class="control-btn" onclick="resetMatching()">
+                        <i class="fas fa-redo"></i> إعادة التمرين
+                    </button>
+                    <button class="control-btn" onclick="showMatchingSolutions()">
+                        <i class="fas fa-lightbulb"></i> عرض الحلول
+                    </button>
+                </div>
+            `;
+        }
+
+        // سحب كلمة
+        function dragWord(event, word) {
+            event.dataTransfer.setData("text", word);
+            event.target.classList.add('dragging');
+        }
+
+        // السماح بالإسقاط
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // إسقاط تعريف
+        function dropDefinition(event, correctWord, definition, letter) {
+            event.preventDefault();
+            const draggedWord = event.dataTransfer.getData("text");
+            
+            // التحقق من صحة المطابقة
+            if (draggedWord === correctWord) {
+                // إضافة للمطابقات الصحيحة
+                if (!matchedPairs.find(pair => pair.word === draggedWord)) {
+                    matchedPairs.push({
+                        word: draggedWord,
+                        definition: definition,
+                        letter: letter
+                    });
+                    
+                    // تحديث العناصر
+                    const wordElement = document.querySelector(`[data-word="${draggedWord}"]`);
+                    const defElement = event.target.closest('.matching-item');
+                    
+                    if (wordElement) wordElement.classList.add('matched');
+                    if (defElement) defElement.classList.add('matched');
+                    
+                    // التحقق من اكتمال التمرين
+                    if (matchedPairs.length === lectureTerms.length) {
+                        document.getElementById('matching-result').style.display = 'block';
+                    }
+                }
+            } else {
+                // إظهار رسالة خطأ
+                alert('✗ هذا التوصيل غير صحيح. حاول مرة أخرى.');
+            }
+            
+            // إزالة حالة السحب
+            document.querySelectorAll('.dragging').forEach(el => {
+                el.classList.remove('dragging');
+            });
+        }
+
+        // التحقق من التوصيل
+        function checkMatching() {
+            if (matchedPairs.length === lectureTerms.length) {
+                alert('✓ أحسنت! لقد وصلت جميع الكلمات بشكل صحيح.');
+            } else {
+                alert(`لقد وصلت ${matchedPairs.length} من أصل ${lectureTerms.length} كلمة بشكل صحيح. استمر في المحاولة!`);
+            }
+        }
+
+        // إعادة تعيين التمرين
+        function resetMatching() {
+            startMatchingExercise();
+        }
+
+        // عرض حلول التمرين
+        function showMatchingSolutions() {
+            const modalBody = document.getElementById('modal-body');
+            
+            let solutionsHTML = '';
+            lectureTerms.forEach(term => {
+                solutionsHTML += `
+                    <div class="term-item">
+                        <h4>${term.word} - (${term.letter})</h4>
+                        <p><strong>التعريف بالإنجليزية:</strong> ${term.definition}</p>
+                        <div class="term-definition">
+                            <strong>التعريف بالعربية:</strong> ${term.arabicDefinition}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            modalBody.innerHTML = `
+                <button class="control-btn secondary" style="margin-bottom: 20px;" onclick="startMatchingExercise()">
+                    <i class="fas fa-arrow-right"></i> العودة لتمرين التوصيل
+                </button>
+                
+                <h3 class="content-header">الحلول الكاملة لتمرين التوصيل</h3>
+                
+                <div class="content-container">
+                    <div class="terms-list">
+                        ${solutionsHTML}
+                    </div>
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn" onclick="openSection('mcq-test')">
+                        <i class="fas fa-question-circle"></i> الانتقال لاختبار MCQ
+                    </button>
+                    <button class="control-btn" onclick="closeModal()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                </div>
+            `;
+        }
+
+        // عرض محتوى المحاضرة
+        function showLectureContent() {
+            const modalBody = document.getElementById('modal-body');
+            
+            let termsHTML = '';
+            lectureTerms.forEach(term => {
+                termsHTML += `
+                    <div class="term-item">
+                        <h4>${term.word} - (${term.letter})</h4>
+                        <p><strong>English Definition:</strong> ${term.definition}</p>
+                        <div class="term-definition">
+                            <strong>التعريف بالعربية:</strong> ${term.arabicDefinition}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            modalBody.innerHTML = `
+                <h3 class="content-header">المحاضرة الأولى - مصطلحات الأمن السيبراني</h3>
+                
+                <div class="content-container">
+                    <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 1.2rem;">
+                        الكلمات المطلوب حفظها وربطها مع التعريفات المناسبة:
+                    </p>
+                    
+                    <div class="terms-list">
+                        ${termsHTML}
+                    </div>
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn" onclick="openSection('mcq-test')">
+                        <i class="fas fa-question-circle"></i> اختبر نفسك (MCQ)
+                    </button>
+                    <button class="control-btn" onclick="openSection('matching-exercise')">
+                        <i class="fas fa-random"></i> تمرين التوصيل
+                    </button>
+                    <button class="control-btn secondary" onclick="closeModal()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                </div>
+            `;
+        }
+
+        // عرض تقدم المذاكرة
+        function showProgress() {
+            const modalBody = document.getElementById('modal-body');
+            
+            // جلب التقدم من localStorage (إن وجد)
+            const savedScore = localStorage.getItem('cybersecurity_quiz_best_score') || 0;
+            const attempts = localStorage.getItem('cybersecurity_quiz_attempts') || 0;
+            
+            modalBody.innerHTML = `
+                <h3 class="content-header">تقدم المذاكرة</h3>
+                
+                <div class="content-container">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                        <div style="background: white; border-radius: 15px; padding: 25px; text-align: center; border: 3px solid #4caf50;">
+                            <div style="font-size: 3rem; color: #4caf50; font-weight: 800;">${savedScore}%</div>
+                            <div style="color: #666; font-size: 1.2rem; margin-top: 10px;">أفضل نتيجة</div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 15px; padding: 25px; text-align: center; border: 3px solid #1a237e;">
+                            <div style="font-size: 3rem; color: #1a237e; font-weight: 800;">${attempts}</div>
+                            <div style="color: #666; font-size: 1.2rem; margin-top: 10px;">عدد المحاولات</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 15px; padding: 25px; margin-bottom: 25px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">نصائح للتحسين:</h4>
+                        <ul style="text-align: right; color: #666; list-style-type: none; padding: 0;">
+                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
+                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
+                                راجع مصطلحات المحاضرة أولاً قبل الاختبار
+                            </li>
+                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
+                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
+                                قم بتمرين التوصيل عدة مرات حتى تتقن جميع المصطلحات
+                            </li>
+                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
+                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
+                                ركز على فهم التعريفات باللغتين العربية والإنجليزية
+                            </li>
+                            <li style="padding-right: 25px; position: relative;">
+                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
+                                اختبر نفسك بانتظام لتقييم تقدمك
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #e8f5e9; border-radius: 15px; padding: 20px; text-align: center;">
+                        <h4 style="color: #2e7d32; margin-bottom: 10px;">المصطلحات التي يجب تركيز عليها:</h4>
+                        <p style="color: #666;">${lectureTerms.map(term => term.word).join(', ')}</p>
+                    </div>
+                </div>
+                
+                <div class="test-controls">
+                    <button class="control-btn" onclick="openSection('lecture-content')">
+                        <i class="fas fa-book"></i> مراجعة المحتوى
+                    </button>
+                    <button class="control-btn" onclick="openSection('mcq-test')">
+                        <i class="fas fa-question-circle"></i> بدء اختبار جديد
+                    </button>
+                    <button class="control-btn secondary" onclick="closeModal()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                </div>
+            `;
+        }
+
+
+        function resetTest() {
+            currentQuestion = 0;
+            userAnswers = [];
+            testSubmitted = false;
+            score = 0;
+            matchedPairs = [];
+        }
+
+        window.addEventListener('beforeunload', function() {
+            if (score > 0) {
+                const bestScore = localStorage.getItem('cybersecurity_quiz_best_score') || 0;
+                if (score > bestScore) {
+                    localStorage.setItem('cybersecurity_quiz_best_score', Math.round((score / mcqQuestions.length) * 100));
+                }
+                
+                const attempts = parseInt(localStorage.getItem('cybersecurity_quiz_attempts') || 0);
+                localStorage.setItem('cybersecurity_quiz_attempts', attempts + 1);
+            }
+        });
+
+
+    </script>
+</body>
+</html>
