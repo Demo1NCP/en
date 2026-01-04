@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الجامعة التقنية الشمالية - برنامج اختبارات الأمن السيبراني</title>
+    <title>الجامعة التقنية الشمالية - اختبارات الأمن السيبراني باللغة الإنجليزية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -188,7 +188,7 @@
             max-height: calc(90vh - 100px);
         }
 
-        /* اختبار MCQ */
+        /* أسئلة MCQ */
         .question-card {
             background: white;
             border-radius: 15px;
@@ -281,6 +281,7 @@
             font-size: 1.2rem;
         }
 
+        /* التحكم في الاختبار */
         .test-controls {
             display: flex;
             justify-content: space-between;
@@ -346,28 +347,7 @@
             margin-top: 5px;
         }
 
-        .result-details {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 25px;
-            text-align: right;
-        }
-
-        .result-details h4 {
-            color: #1a237e;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        /* تمرين التوصيل */
+        /* تمارين التوصيل */
         .matching-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -405,28 +385,10 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .matching-item.dragging {
-            opacity: 0.5;
-        }
-
         .matching-item.matched {
             background: #e8f5e9;
             border-color: #4caf50;
             color: #2e7d32;
-        }
-
-        .matching-result {
-            background: #e8f5e9;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 25px;
-            text-align: center;
-            border: 2px solid #4caf50;
-        }
-
-        .matching-result h4 {
-            color: #2e7d32;
-            margin-bottom: 10px;
         }
 
         /* عرض المحتوى */
@@ -471,14 +433,6 @@
             font-size: 1.1rem;
         }
 
-        .term-definition {
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-right: 3px solid #2e7d32;
-        }
-
         /* التنقل السريع */
         .quick-nav {
             display: flex;
@@ -504,6 +458,41 @@
             background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* التقدم */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .progress-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .progress-dot.answered {
+            background: #4caf50;
+        }
+
+        .progress-dot.current {
+            background: #1a237e;
+            transform: scale(1.1);
+        }
+
+        .progress-dot.wrong {
+            background: #f44336;
         }
 
         @media (max-width: 768px) {
@@ -547,6 +536,11 @@
             .test-controls {
                 flex-direction: column;
             }
+            
+            .control-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -555,50 +549,83 @@
         <div class="logo-section">
             <div class="title">
                 <h1>الجامعة التقنية الشمالية</h1>
-                <p>برنامج اختبارات الأمن السيبراني باللغة الإنجليزية</p>
+                <p>اختبارات الأمن السيبراني باللغة الإنجليزية - شامل</p>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="sections-grid">
-            <div class="section-card" onclick="openSection('mcq-test')">
+            <div class="section-card" onclick="openSection('unit1-test')">
                 <div class="section-icon">
-                    <i class="fas fa-question-circle"></i>
+                    <i class="fas fa-microchip"></i>
                 </div>
-                <h3>اختبار MCQ عشوائي</h3>
-                <p>اختبار متعدد الخيارات (10 أسئلة) مع تصحيح فوري</p>
+                <h3>اختبار الوحدة الأولى</h3>
+                <p>مصطلحات الهاردوير وزمن المضارع البسيط</p>
             </div>
 
-            <div class="section-card" onclick="openSection('matching-exercise')">
+            <div class="section-card" onclick="openSection('unit2-test')">
                 <div class="section-icon">
-                    <i class="fas fa-random"></i>
+                    <i class="fas fa-code"></i>
                 </div>
-                <h3>تمرين التوصيل</h3>
-                <p>وصل الكلمات مع التعريفات المناسبة لها</p>
+                <h3>اختبار الوحدة الثانية</h3>
+                <p>البرمجيات والمقارنات والتفضيل</p>
             </div>
 
-            <div class="section-card" onclick="openSection('lecture-content')">
+            <div class="section-card" onclick="openSection('unit3-test')">
                 <div class="section-icon">
-                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-network-wired"></i>
                 </div>
-                <h3>محتوى المحاضرة</h3>
-                <p>عرض جميع الكلمات والتعريفات من المحاضرة الأولى</p>
+                <h3>اختبار الوحدة الثالثة</h3>
+                <p>الشبكات وزمن الماضي البسيط</p>
             </div>
 
-            <div class="section-card" onclick="openSection('progress')">
+            <div class="section-card" onclick="openSection('grammar-test')">
                 <div class="section-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-language"></i>
                 </div>
-                <h3>تقدم المذاكرة</h3>
-                <p>تتبع أدائك في الاختبارات والتمارين</p>
+                <h3>اختبار القواعد</h3>
+                <p>أدوات التعريف والنكرة والضمائر والجمع</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('vocab-test')">
+                <div class="section-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>اختبار المفردات</h3>
+                <p>المرادفات والمتضادات والمصطلحات الأمنية</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('verbs-test')">
+                <div class="section-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>اختبار الأفعال</h3>
+                <p>الأفعال المنتظمة وغير المنتظمة في الأمن السيبراني</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('final-exam')">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>الامتحان النهائي</h3>
+                <p>اختبار شامل على جميع الوحدات</p>
+            </div>
+
+            <div class="section-card" onclick="openSection('all-content')">
+                <div class="section-icon">
+                    <i class="fas fa-archive"></i>
+                </div>
+                <h3>جميع المحتوى</h3>
+                <p>مراجعة كل المصطلحات والقواعد</p>
             </div>
         </div>
 
         <div class="quick-nav">
-            <button class="nav-btn" onclick="openSection('mcq-test')">بدء اختبار MCQ</button>
-            <button class="nav-btn" onclick="openSection('matching-exercise')">بدء تمرين التوصيل</button>
-            <button class="nav-btn" onclick="openSection('lecture-content')">مراجعة المحتوى</button>
+            <button class="nav-btn" onclick="openSection('unit1-test')">الوحدة 1</button>
+            <button class="nav-btn" onclick="openSection('unit2-test')">الوحدة 2</button>
+            <button class="nav-btn" onclick="openSection('unit3-test')">الوحدة 3</button>
+            <button class="nav-btn" onclick="openSection('final-exam')">امتحان نهائي</button>
         </div>
     </div>
 
@@ -614,190 +641,465 @@
     </div>
 
     <script>
-        // بيانات المحاضرة الأولى
-        const lectureTerms = [
+        // بيانات الأسئلة من جميع الملازم
+        const testData = {
+    // Unit 1: Hardware and Present Simple Tense
+    unit1: {
+        title: "Unit 1: Introduction to IT & Computer Systems",
+        questions: [
             {
-                word: "Patch",
-                letter: "c",
-                definition: "An update or change to an operating system or application",
-                arabicDefinition: "تحديث أو تغيير يُجرى على نظام التشغيل أو على تطبيق"
+                type: "mcq",
+                question: "What does CPU stand for?",
+                options: [
+                    "Computer Processing Unit",
+                    "Central Processing Unit",
+                    "Computer Power Unit",
+                    "Central Power Unit"
+                ],
+                correct: 1,
+                explanation: "CPU stands for Central Processing Unit - the brain of the computer"
             },
             {
-                word: "Cyberattack",
-                letter: "e",
-                definition: "an attempt by hackers to damage or destroy a computer network or system",
-                arabicDefinition: "محاولة يقوم بها المخترقون لإلحاق الضرر أو تدمير شبكة أو نظام حاسوبي"
+                type: "mcq",
+                question: "What is the function of RAM?",
+                options: [
+                    "Permanent storage for files",
+                    "Connects all computer components",
+                    "Temporary memory for running applications",
+                    "Controls input devices"
+                ],
+                correct: 2,
+                explanation: "RAM (Random Access Memory) is temporary memory used for running applications"
             },
             {
-                word: "Password",
-                letter: "a",
-                definition: "a string of characters that allows access to a computer system or service",
-                arabicDefinition: "سلسلة من الأحرف تستخدم السماح بالدخول إلى نظام حاسوبي أو خدمة"
+                type: "mcq",
+                question: "Choose the correct verb form: The CPU _____ data.",
+                options: ["process", "processes", "processing", "processed"],
+                correct: 1,
+                explanation: "With He/She/It, we add 's' to the verb: The CPU processes data"
             },
             {
-                word: "Malicious",
-                letter: "f",
-                definition: "characterized by malice; intending or intended to do harm",
-                arabicDefinition: "يتصف بالخبث؛ يهدف أو ينوي الحاق الضرر"
+                type: "mcq",
+                question: "What are Peripherals?",
+                options: [
+                    "Internal computer components",
+                    "Devices connected to the computer (mouse, keyboard, monitor)",
+                    "Operating systems",
+                    "Software programs"
+                ],
+                correct: 1,
+                explanation: "Peripherals are devices connected to the computer like mouse, keyboard, and monitor"
             },
             {
-                word: "Domain",
-                letter: "i",
-                definition: "an area of territory owned or controlled by a particular ruler or government",
-                arabicDefinition: "منطقة أو أرض مملوكة أو مسيطر عليها من قبل حاكم معيّن أو حكومة"
+                type: "mcq",
+                question: "Choose the correct form: IT specialists _____ computer problems.",
+                options: ["fixs", "fix", "fixes", "fixing"],
+                correct: 1,
+                explanation: "With I/You/We/They, we use the base form of the verb: IT specialists fix"
             },
             {
-                word: "Bug",
-                letter: "g",
-                definition: "an error, flaw or fault in a computer program or system that causes it to produce an incorrect or unexpected result",
-                arabicDefinition: "خطأ أو عيب في برنامج أو نظام حاسوبي يؤدي إلى ظهور نتيجة غير صحيحة أو غير متوقعة"
+                type: "fill",
+                question: "Complete the sentence: The motherboard _____ the CPU and RAM.",
+                correctAnswer: "connects",
+                hint: "links or joins"
             },
             {
-                word: "Cybersecurity",
-                letter: "d",
-                definition: "the state of being protected against the criminal or unauthorized use of electronic data, or the measures taken to achieve this",
-                arabicDefinition: "حالة الحماية من الاستخدام الإجرامي أو غير المصرح به للبيانات الإلكترونية، أو الإجراءات المتحدة لتحقيق ذلك"
+                type: "fill",
+                question: "Complete the sentence: This software _____ users to detect viruses.",
+                correctAnswer: "helps",
+                hint: "assists or aids"
             },
             {
-                word: "Spyware",
-                letter: "j",
-                definition: "software that enables a user to obtain covert information about another's computer activities by transmitting data covertly from their hard drive",
-                arabicDefinition: "برنامج يتيح للمستخدم الحصول على معلومات سرية عن نشاطات جهاز شخص آخر من خلال نقل البيانات بشكل خفي من القرص الصلب الخاص به"
-            },
-            {
-                word: "Security control",
-                letter: "h",
-                definition: "Anything used as part of a security response strategy which addresses a threat in order to reduce risk",
-                arabicDefinition: "أي شيء يستخدم ضمن إستراتيجية الاستجابة الأمنية لمعالجة تهديد بهدف تقليل المخاطر"
-            },
-            {
-                word: "Privacy",
-                letter: "b",
-                definition: "the state of being free from public attention",
-                arabicDefinition: "حالة كون الشخص بعيداً عن لفت الانتباه العام أو المراقبة"
+                type: "fill",
+                question: "Complete the sentence: Hard drives _____ all your saved files.",
+                correctAnswer: "contain",
+                hint: "hold or store"
             }
-        ];
+        ]
+    },
+    
+    // Unit 2: Software and Comparisons
+    unit2: {
+        title: "Unit 2: Software & Operating Systems",
+        questions: [
+            {
+                type: "mcq",
+                question: "What is Malware?",
+                options: [
+                    "Helpful computer programs",
+                    "System drivers",
+                    "Malicious software designed to damage computers",
+                    "Antivirus protection"
+                ],
+                correct: 2,
+                explanation: "Malware is malicious software designed to damage or disrupt computer systems"
+            },
+            {
+                type: "mcq",
+                question: "What is the difference between System Software and Application Software?",
+                options: [
+                    "There is no difference",
+                    "System Software for applications, Application Software for system",
+                    "System Software includes OS, Application Software for specific tasks",
+                    "Both are the same"
+                ],
+                correct: 2,
+                explanation: "System Software includes the OS, while Application Software is for specific tasks like word processing"
+            },
+            {
+                type: "comparison",
+                question: "Complete the comparison: An SSD is _____ an HDD.",
+                correctAnswer: "faster than",
+                options: ["faster than", "more fast than", "fastest than", "the faster than"]
+            },
+            {
+                type: "comparison",
+                question: "Complete the comparison: Linux is _____ Windows 98.",
+                correctAnswer: "more secure than",
+                options: ["secure than", "more secure than", "securest than", "the most secure than"]
+            },
+            {
+                type: "comparison",
+                question: "Complete: This is _____ processor on the market.",
+                correctAnswer: "the fastest",
+                options: ["the fastest", "faster", "more fast", "fastest"]
+            },
+            {
+                type: "comparison",
+                question: "Complete: Phishing is one of _____ cyber attacks.",
+                correctAnswer: "the most common",
+                options: ["the most common", "more common", "commonest", "most common"]
+            },
+            {
+                type: "comparison",
+                question: "Complete the comparison: WPA2 is _____ WEP.",
+                correctAnswer: "more secure than",
+                options: ["more secure than", "secure than", "securest than", "the most secure"]
+            },
+            {
+                type: "comparison",
+                question: "Complete: The supercomputer is _____ computer.",
+                correctAnswer: "the most powerful",
+                options: ["the most powerful", "more powerful", "powerfullest", "most powerful"]
+            }
+        ]
+    },
+    
+    // Unit 3: Networks and Past Tense
+    unit3: {
+        title: "Unit 3: Networks & The Internet",
+        questions: [
+            {
+                type: "mcq",
+                question: "What is a LAN?",
+                options: [
+                    "Wide Area Network connecting different locations",
+                    "Local Area Network connecting devices in a small area",
+                    "Internet Protocol",
+                    "Device that directs network traffic"
+                ],
+                correct: 1,
+                explanation: "LAN stands for Local Area Network - connects devices in a small area like an office"
+            },
+            {
+                type: "mcq",
+                question: "What is an IP Address?",
+                options: [
+                    "Email address",
+                    "Device name on network",
+                    "Internet Protocol address identifying a device on network",
+                    "Phone number"
+                ],
+                correct: 2,
+                explanation: "IP Address is an Internet Protocol address that identifies a device on a network"
+            },
+            {
+                type: "mcq",
+                question: "What does a Firewall do?",
+                options: [
+                    "Speeds up internet connection",
+                    "Blocks unauthorized access",
+                    "Stores data",
+                    "Connects devices"
+                ],
+                correct: 1,
+                explanation: "A firewall blocks unauthorized access to a network"
+            },
+            {
+                type: "mcq",
+                question: "What does Encrypt mean?",
+                options: [
+                    "Delete data",
+                    "Copy data",
+                    "Convert data into secret code",
+                    "Send data"
+                ],
+                correct: 2,
+                explanation: "Encrypt means to convert data into a secret code for security"
+            },
+            {
+                type: "past",
+                question: "Convert to past tense: The first virus _____ simple, but now threats _____ complex.",
+                correctAnswer: ["was", "became"],
+                options: ["is/was", "was/became", "were/become", "was/become"]
+            },
+            {
+                type: "past",
+                question: "Convert to past tense: He _____ a Python script last night.",
+                correctAnswer: "wrote",
+                options: ["write", "wrote", "written", "writing"]
+            },
+            {
+                type: "past",
+                question: "Convert to past tense: The company _____ data because they didn't have a backup.",
+                correctAnswer: "lost",
+                options: ["lose", "lost", "losed", "losing"]
+            },
+            {
+                type: "past",
+                question: "Convert to past tense: We _____ the printer to the LAN.",
+                correctAnswer: "connected",
+                options: ["connect", "connected", "connects", "connecting"]
+            }
+        ]
+    },
+    
+    // Grammar: Articles, Pronouns and Plurals
+    grammar: {
+        title: "Grammar Test: Articles, Pronouns and Plurals",
+        questions: [
+            {
+                type: "mcq",
+                question: "When do we use 'a'?",
+                options: [
+                    "Before nouns starting with vowel sounds",
+                    "Before nouns starting with consonant sounds",
+                    "Before plural nouns",
+                    "Before definite nouns"
+                ],
+                correct: 1,
+                explanation: "We use 'a' before nouns starting with consonant sounds"
+            },
+            {
+                type: "mcq",
+                question: "When do we use 'an'?",
+                options: [
+                    "Before nouns starting with consonant sounds",
+                    "Before nouns starting with vowel sounds",
+                    "Before definite nouns",
+                    "Before plural nouns"
+                ],
+                correct: 1,
+                explanation: "We use 'an' before nouns starting with vowel sounds"
+            },
+            {
+                type: "mcq",
+                question: "What is the plural of 'bus'?",
+                options: ["buses", "busses", "bus", "busi"],
+                correct: 0,
+                explanation: "Nouns ending in s, x, sh, ch add 'es': bus → buses"
+            },
+            {
+                type: "mcq",
+                question: "What is the plural of 'city'?",
+                options: ["citys", "cities", "citis", "cityes"],
+                correct: 1,
+                explanation: "Nouns ending in y preceded by consonant: change y to i and add 'es': city → cities"
+            },
+            {
+                type: "mcq",
+                question: "What is the plural of 'man'?",
+                options: ["mans", "men", "mens", "man"],
+                correct: 1,
+                explanation: "'man' has irregular plural: men"
+            },
+            {
+                type: "mcq",
+                question: "What is the plural of 'child'?",
+                options: ["childs", "children", "childes", "child"],
+                correct: 1,
+                explanation: "'child' has irregular plural: children"
+            },
+            {
+                type: "article",
+                question: "Choose the correct article: _____ United Kingdom",
+                correctAnswer: "The",
+                options: ["A", "An", "The", "No article"]
+            },
+            {
+                type: "article",
+                question: "Choose the correct article: He is _____ engineer.",
+                correctAnswer: "an",
+                options: ["a", "an", "the", "No article"]
+            }
+        ]
+    },
+    
+    // Vocabulary: Synonyms and Antonyms
+    vocab: {
+        title: "Vocabulary Test: Synonyms & Antonyms",
+        questions: [
+            {
+                type: "synonym",
+                question: "What is a synonym for Vulnerability?",
+                correctAnswer: "Weakness",
+                options: ["Strength", "Weakness", "Protection", "Security"]
+            },
+            {
+                type: "synonym",
+                question: "What is a synonym for Malware?",
+                correctAnswer: "Malicious Software",
+                options: ["Antivirus", "Malicious Software", "Firewall", "Operating System"]
+            },
+            {
+                type: "synonym",
+                question: "What is a synonym for Breach?",
+                correctAnswer: "Intrusion",
+                options: ["Protection", "Intrusion", "Firewall", "Encryption"]
+            },
+            {
+                type: "synonym",
+                question: "What is a synonym for Authorization?",
+                correctAnswer: "Permission",
+                options: ["Permission", "Denial", "Attack", "Vulnerability"]
+            },
+            {
+                type: "synonym",
+                question: "What is a synonym for Encryption?",
+                correctAnswer: "Encoding",
+                options: ["Decoding", "Encoding", "Reading", "Writing"]
+            },
+            {
+                type: "antonym",
+                question: "What is the antonym of Encryption?",
+                correctAnswer: "Decryption",
+                options: ["Decryption", "Encoding", "Scrambling", "Hashing"]
+            },
+            {
+                type: "antonym",
+                question: "What is the antonym of Authorized?",
+                correctAnswer: "Unauthorized",
+                options: ["Unauthorized", "Permitted", "Allowed", "Legal"]
+            },
+            {
+                type: "antonym",
+                question: "What is the antonym of Secure?",
+                correctAnswer: "Vulnerable",
+                options: ["Vulnerable", "Protected", "Safe", "Guarded"]
+            },
+            {
+                type: "antonym",
+                question: "What is the antonym of Malicious?",
+                correctAnswer: "Benign",
+                options: ["Benign", "Harmful", "Dangerous", "Evil"]
+            },
+            {
+                type: "antonym",
+                question: "What is the antonym of Whitelist?",
+                correctAnswer: "Blacklist",
+                options: ["Blacklist", "Greylist", "Checklist", "Allowlist"]
+            }
+        ]
+    },
+    
+    // Verbs: Regular and Irregular
+    verbs: {
+        title: "Verbs Test: Regular & Irregular Verbs",
+        questions: [
+            {
+                type: "verb",
+                question: "What is the past tense of Encrypt?",
+                correctAnswer: "Encrypted",
+                options: ["Encrypt", "Encrypted", "Encrypting", "Encryption"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Authenticate?",
+                correctAnswer: "Authenticated",
+                options: ["Authenticate", "Authenticated", "Authenticating", "Authentication"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Patch?",
+                correctAnswer: "Patched",
+                options: ["Patch", "Patched", "Patching", "Patches"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Breach?",
+                correctAnswer: "Breached",
+                options: ["Breach", "Breached", "Breaching", "Breaches"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Set up?",
+                correctAnswer: "Set up",
+                options: ["Set up", "Setted up", "Setting up", "Sets up"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Send?",
+                correctAnswer: "Sent",
+                options: ["Send", "Sent", "Sended", "Sending"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Build?",
+                correctAnswer: "Built",
+                options: ["Build", "Built", "Builded", "Building"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Write?",
+                correctAnswer: "Wrote",
+                options: ["Write", "Wrote", "Written", "Writing"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Find?",
+                correctAnswer: "Found",
+                options: ["Find", "Found", "Finded", "Finding"]
+            },
+            {
+                type: "verb",
+                question: "What is the past tense of Run?",
+                correctAnswer: "Ran",
+                options: ["Run", "Ran", "Runned", "Running"]
+            }
+        ]
+    },
+    
+    // Final Exam - will be created dynamically
+    final: {
+        title: "Final Comprehensive Exam",
+        questions: []
+    }
+};
 
-        // أسئلة MCQ
-        const mcqQuestions = [
-            {
-                question: "What is a 'Patch' in cybersecurity?",
-                options: [
-                    "A type of malicious software",
-                    "A security protocol",
-                    "An update or fix for software",
-                    "A type of encryption"
-                ],
-                correct: 2,
-                explanation: "A patch is a small file downloaded to a device to fix a problem, improve performance, or update software."
-            },
-            {
-                question: "What does a 'Cyberattack' refer to?",
-                options: [
-                    "A security update",
-                    "A type of antivirus software",
-                    "An attempt by hackers to damage or destroy a computer system",
-                    "A backup procedure"
-                ],
-                correct: 2,
-                explanation: "A cyberattack is an attempt by hackers to infiltrate, damage, or steal information from a system or network."
-            },
-            {
-                question: "Which of the following best defines 'Password'?",
-                options: [
-                    "A type of hardware device",
-                    "A string of characters that allows access to a system",
-                    "A network protocol",
-                    "A security certificate"
-                ],
-                correct: 1,
-                explanation: "A password is a string of characters (numbers/letters/symbols) that allows you to access a device, site, or service."
-            },
-            {
-                question: "What does 'Malicious' mean in cybersecurity context?",
-                options: [
-                    "Helpful or beneficial",
-                    "Intending to do harm",
-                    "Outdated or old",
-                    "Complex or difficult"
-                ],
-                correct: 1,
-                explanation: "Malicious describes software or people with intent to cause harm or infiltrate systems."
-            },
-            {
-                question: "What is a 'Domain' in computing?",
-                options: [
-                    "A type of virus",
-                    "An error in code",
-                    "A website name like google.com",
-                    "A security control"
-                ],
-                correct: 2,
-                explanation: "A domain is a website name like google.com. It refers to an area controlled by a particular entity."
-            },
-            {
-                question: "What is a 'Bug' in software?",
-                options: [
-                    "A security feature",
-                    "An error that causes incorrect results",
-                    "A type of malware",
-                    "A programming language"
-                ],
-                correct: 1,
-                explanation: "A bug is an error, flaw, or fault in a computer program that causes it to produce incorrect or unexpected results."
-            },
-            {
-                question: "What does 'Cybersecurity' involve?",
-                options: [
-                    "Only antivirus software",
-                    "Protecting devices and data from cyberattacks",
-                    "Only network management",
-                    "Only data backup"
-                ],
-                correct: 1,
-                explanation: "Cybersecurity involves protecting devices and data from electronic attacks and preventing unauthorized use."
-            },
-            {
-                question: "What is 'Spyware'?",
-                options: [
-                    "Software that protects your privacy",
-                    "Software that gathers information without your knowledge",
-                    "A type of firewall",
-                    "Software that speeds up your computer"
-                ],
-                correct: 1,
-                explanation: "Spyware is software that infiltrates your device and collects information without your knowledge, sending it to another party."
-            },
-            {
-                question: "What are 'Security controls'?",
-                options: [
-                    "Only passwords",
-                    "Measures used to protect systems and reduce risks",
-                    "Only firewalls",
-                    "Only encryption tools"
-                ],
-                correct: 1,
-                explanation: "Security controls are any steps or tools used to protect systems and reduce risks, like firewalls, passwords, and encryption."
-            },
-            {
-                question: "What does 'Privacy' mean?",
-                options: [
-                    "Sharing all information publicly",
-                    "Being free from surveillance or interference",
-                    "Having strong passwords",
-                    "Using antivirus software"
-                ],
-                correct: 1,
-                explanation: "Privacy is the state of being free from surveillance or interference, keeping personal information away from others."
-            }
-        ];
+        // إنشاء الامتحان النهائي (30 سؤال عشوائي من جميع الوحدات)
+        function createFinalExam() {
+            const allQuestions = [];
+            
+            // جمع الأسئلة من جميع الوحدات
+            Object.keys(testData).forEach(unit => {
+                if (unit !== 'final') {
+                    testData[unit].questions.forEach(q => {
+                        allQuestions.push({...q, unit: unit});
+                    });
+                }
+            });
+            
+            // خلط الأسئلة واختيار 30 سؤال
+            const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+            testData.final.questions = shuffled.slice(0, 30);
+        }
 
         // حالة التطبيق
         let currentSection = '';
-        let currentQuestion = 0;
+        let currentTest = null;
+        let currentQuestionIndex = 0;
         let userAnswers = [];
         let testSubmitted = false;
-        let matchedPairs = [];
         let score = 0;
 
         // فتح قسم
@@ -811,21 +1113,38 @@
             document.body.style.overflow = 'hidden';
             
             switch(section) {
-                case 'mcq-test':
-                    modalTitle.textContent = 'اختبار MCQ عشوائي';
-                    startMCQTest();
+                case 'unit1-test':
+                    modalTitle.textContent = testData.unit1.title;
+                    startTest('unit1');
                     break;
-                case 'matching-exercise':
-                    modalTitle.textContent = 'تمرين التوصيل';
-                    startMatchingExercise();
+                case 'unit2-test':
+                    modalTitle.textContent = testData.unit2.title;
+                    startTest('unit2');
                     break;
-                case 'lecture-content':
-                    modalTitle.textContent = 'محتوى المحاضرة الأولى';
-                    showLectureContent();
+                case 'unit3-test':
+                    modalTitle.textContent = testData.unit3.title;
+                    startTest('unit3');
                     break;
-                case 'progress':
-                    modalTitle.textContent = 'تقدم المذاكرة';
-                    showProgress();
+                case 'grammar-test':
+                    modalTitle.textContent = testData.grammar.title;
+                    startTest('grammar');
+                    break;
+                case 'vocab-test':
+                    modalTitle.textContent = testData.vocab.title;
+                    startTest('vocab');
+                    break;
+                case 'verbs-test':
+                    modalTitle.textContent = testData.verbs.title;
+                    startTest('verbs');
+                    break;
+                case 'final-exam':
+                    createFinalExam();
+                    modalTitle.textContent = testData.final.title;
+                    startTest('final');
+                    break;
+                case 'all-content':
+                    modalTitle.textContent = "جميع المحتوى";
+                    showAllContent();
                     break;
             }
         }
@@ -838,7 +1157,7 @@
             resetTest();
         }
 
-
+        // النقر خارج النافذة
         window.onclick = function(event) {
             const modal = document.getElementById('section-modal');
             if (event.target === modal) {
@@ -846,46 +1165,84 @@
             }
         }
 
-        // بدء اختبار MCQ
-        function startMCQTest() {
-            currentQuestion = 0;
-            userAnswers = new Array(mcqQuestions.length).fill(-1);
+        // بدء اختبار
+        function startTest(testType) {
+            currentTest = testData[testType];
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentTest.questions.length).fill(null);
             testSubmitted = false;
             score = 0;
             
-            // خلط الأسئلة عشوائياً
-            shuffleArray(mcqQuestions);
             showQuestion();
-        }
-
-        // خلط المصفوفة
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
         }
 
         // عرض السؤال الحالي
         function showQuestion() {
             const modalBody = document.getElementById('modal-body');
             
-            if (currentQuestion >= mcqQuestions.length) {
+            if (!currentTest || currentQuestionIndex >= currentTest.questions.length) {
                 showTestResults();
                 return;
             }
             
-            const question = mcqQuestions[currentQuestion];
-            const questionNumber = currentQuestion + 1;
+            const question = currentTest.questions[currentQuestionIndex];
+            const questionNumber = currentQuestionIndex + 1;
+            const totalQuestions = currentTest.questions.length;
             
+            let questionHTML = '';
+            
+            // بناء السؤال حسب نوعه
+            switch(question.type) {
+                case 'mcq':
+                    questionHTML = buildMCQQuestion(question, questionNumber, totalQuestions);
+                    break;
+                case 'fill':
+                    questionHTML = buildFillQuestion(question, questionNumber, totalQuestions);
+                    break;
+                case 'comparison':
+                case 'past':
+                case 'article':
+                case 'synonym':
+                case 'antonym':
+                case 'verb':
+                    questionHTML = buildOptionsQuestion(question, questionNumber, totalQuestions);
+                    break;
+            }
+            
+            // إضافة عناصر التحكم
+            const controlsHTML = `
+                <div class="test-controls">
+                    <button class="control-btn secondary" onclick="prevQuestion()" ${currentQuestionIndex === 0 ? 'disabled style="opacity:0.5"' : ''}>
+                        <i class="fas fa-arrow-right"></i> السؤال السابق
+                    </button>
+                    
+                    ${testSubmitted ? 
+                        `<button class="control-btn" onclick="nextQuestion()">
+                            ${currentQuestionIndex < totalQuestions - 1 ? 'السؤال التالي <i class="fas fa-arrow-left"></i>' : 'عرض النتيجة النهائية'}
+                        </button>` 
+                        : 
+                        `<button class="control-btn" onclick="submitAnswer()">
+                            ${currentQuestionIndex < totalQuestions - 1 ? 'تأكيد والانتقال للسؤال التالي' : 'إنهاء الاختبار وعرض النتيجة'}
+                        </button>`
+                    }
+                </div>
+            `;
+            
+            // إضافة نقاط التقدم
+            const progressHTML = buildProgressDots();
+            
+            modalBody.innerHTML = questionHTML + controlsHTML + progressHTML;
+        }
+
+        // بناء سؤال MCQ
+        function buildMCQQuestion(question, qNum, total) {
             let optionsHTML = '';
-            const optionLetters = ['A', 'B', 'C', 'D'];
+            const optionLetters = ['أ', 'ب', 'ج', 'د'];
             
             question.options.forEach((option, index) => {
-                const isSelected = userAnswers[currentQuestion] === index;
+                const isSelected = userAnswers[currentQuestionIndex] === index;
                 const isCorrect = testSubmitted && index === question.correct;
-                const isIncorrect = testSubmitted && userAnswers[currentQuestion] === index && userAnswers[currentQuestion] !== question.correct;
+                const isIncorrect = testSubmitted && userAnswers[currentQuestionIndex] === index && userAnswers[currentQuestionIndex] !== question.correct;
                 
                 let className = 'option-btn';
                 if (isSelected) className += ' selected';
@@ -900,10 +1257,10 @@
                 `;
             });
             
-            modalBody.innerHTML = `
+            return `
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">سؤال ${questionNumber} من ${mcqQuestions.length}</div>
+                        <div class="question-number">سؤال ${qNum} من ${total}</div>
                         <div style="color: #666;">الدرجة: 1</div>
                     </div>
                     
@@ -914,78 +1271,194 @@
                     </div>
                     
                     ${testSubmitted ? `
-                        <div class="result-details" style="margin-top: 25px;">
-                            <h4>${userAnswers[currentQuestion] === question.correct ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}</h4>
+                        <div class="term-definition" style="margin-top: 25px;">
+                            <h4 style="color: ${userAnswers[currentQuestionIndex] === question.correct ? '#2e7d32' : '#c62828'};">
+                                ${userAnswers[currentQuestionIndex] === question.correct ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}
+                            </h4>
                             <p style="color: #666; line-height: 1.7;">${question.explanation}</p>
                         </div>
                     ` : ''}
                 </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn secondary" onclick="prevQuestion()" ${currentQuestion === 0 ? 'disabled style="opacity:0.5"' : ''}>
-                        <i class="fas fa-arrow-right"></i> السؤال السابق
-                    </button>
+            `;
+        }
+
+        // بناء سؤال تعبئة
+        function buildFillQuestion(question, qNum, total) {
+            const userAnswer = userAnswers[currentQuestionIndex] || '';
+            const isCorrect = testSubmitted && userAnswer.toLowerCase() === question.correctAnswer.toLowerCase();
+            const isWrong = testSubmitted && userAnswer.toLowerCase() !== question.correctAnswer.toLowerCase();
+            
+            return `
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">سؤال ${qNum} من ${total}</div>
+                        <div style="color: #666;">الدرجة: 1</div>
+                    </div>
                     
-                    ${testSubmitted ? 
-                        `<button class="control-btn" onclick="nextQuestion()">
-                            ${currentQuestion < mcqQuestions.length - 1 ? 'السؤال التالي <i class="fas fa-arrow-left"></i>' : 'عرض النتيجة النهائية'}
-                        </button>` 
-                        : 
-                        `<button class="control-btn" onclick="submitAnswer()">
-                            ${currentQuestion < mcqQuestions.length - 1 ? 'تأكيد والانتقال للسؤال التالي' : 'إنهاء الاختبار وعرض النتيجة'}
-                        </button>`
-                    }
-                </div>
-                
-                <div style="text-align: center; margin-top: 25px;">
-                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                        ${mcqQuestions.map((q, index) => {
-                            let bgColor = '#e0e0e0';
-                            if (userAnswers[index] !== -1 && !testSubmitted) bgColor = '#4caf50';
-                            if (testSubmitted) {
-                                if (userAnswers[index] === mcqQuestions[index].correct) bgColor = '#4caf50';
-                                else bgColor = '#f44336';
-                            }
-                            
-                            return `<div style="width: 35px; height: 35px; border-radius: 50%; background: ${bgColor}; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer;" onclick="goToQuestion(${index})">${index+1}</div>`;
-                        }).join('')}
+                    <div class="question-text">${question.question}</div>
+                    
+                    <div style="margin: 25px 0;">
+                        <input type="text" 
+                               id="fill-answer" 
+                               value="${userAnswer}"
+                               oninput="updateFillAnswer(this.value)"
+                               placeholder="اكتب الإجابة هنا..."
+                               ${testSubmitted ? 'disabled' : ''}
+                               style="width: 100%; padding: 15px; font-size: 1.2rem; border-radius: 10px; border: 2px solid #e0e0e0; text-align: right;">
+                        <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">تلميح: ${question.hint}</p>
                     </div>
-                    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px;">
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <div style="width: 15px; height: 15px; border-radius: 50%; background: #e0e0e0;"></div>
-                            <span style="color: #666; font-size: 0.9rem;">لم يتم الإجابة</span>
+                    
+                    ${testSubmitted ? `
+                        <div class="term-definition" style="margin-top: 25px;">
+                            <h4 style="color: ${isCorrect ? '#2e7d32' : '#c62828'};">
+                                ${isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}
+                            </h4>
+                            <p style="color: #666; line-height: 1.7;">الإجابة الصحيحة: <strong>${question.correctAnswer}</strong></p>
+                            ${!isCorrect ? `<p style="color: #666; line-height: 1.7;">إجابتك: ${userAnswer}</p>` : ''}
                         </div>
-                        <div style="display: flex; align-items: center; gap: 5px;">
-                            <div style="width: 15px; height: 15px; border-radius: 50%; background: #4caf50;"></div>
-                            <span style="color: #666; font-size: 0.9rem;">تمت الإجابة</span>
-                        </div>
-                        ${testSubmitted ? `
-                            <div style="display: flex; align-items: center; gap: 5px;">
-                                <div style="width: 15px; height: 15px; border-radius: 50%; background: #f44336;"></div>
-                                <span style="color: #666; font-size: 0.9rem;">إجابة خاطئة</span>
-                            </div>
-                        ` : ''}
-                    </div>
+                    ` : ''}
                 </div>
             `;
         }
 
-        // اختيار إجابة
+        // بناء سؤال خيارات
+        function buildOptionsQuestion(question, qNum, total) {
+            let optionsHTML = '';
+            const optionLetters = ['أ', 'ب', 'ج', 'د'];
+            
+            question.options.forEach((option, index) => {
+                const isSelected = userAnswers[currentQuestionIndex] === option;
+                const isCorrect = testSubmitted && option === question.correctAnswer;
+                const isIncorrect = testSubmitted && userAnswers[currentQuestionIndex] === option && userAnswers[currentQuestionIndex] !== question.correctAnswer;
+                
+                let className = 'option-btn';
+                if (isSelected) className += ' selected';
+                if (isCorrect) className += ' correct';
+                if (isIncorrect) className += ' incorrect';
+                
+                optionsHTML += `
+                    <button class="${className}" onclick="selectOptionAnswer('${option}')" ${testSubmitted ? 'disabled' : ''}>
+                        <div class="option-letter">${optionLetters[index]}</div>
+                        <div style="flex: 1; text-align: right;">${option}</div>
+                    </button>
+                `;
+            });
+            
+            return `
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">سؤال ${qNum} من ${total}</div>
+                        <div style="color: #666;">الدرجة: 1</div>
+                    </div>
+                    
+                    <div class="question-text">${question.question}</div>
+                    
+                    <div class="options-list">
+                        ${optionsHTML}
+                    </div>
+                    
+                    ${testSubmitted ? `
+                        <div class="term-definition" style="margin-top: 25px;">
+                            <h4 style="color: ${userAnswers[currentQuestionIndex] === question.correctAnswer ? '#2e7d32' : '#c62828'};">
+                                ${userAnswers[currentQuestionIndex] === question.correctAnswer ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}
+                            </h4>
+                            <p style="color: #666; line-height: 1.7;">الإجابة الصحيحة: <strong>${question.correctAnswer}</strong></p>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // بناء نقاط التقدم
+        function buildProgressDots() {
+            let dotsHTML = '';
+            
+            for (let i = 0; i < currentTest.questions.length; i++) {
+                let className = 'progress-dot';
+                if (i === currentQuestionIndex) className += ' current';
+                if (userAnswers[i] !== null) {
+                    if (testSubmitted) {
+                        // بعد التصحيح
+                        const question = currentTest.questions[i];
+                        let isCorrect = false;
+                        
+                        if (question.type === 'mcq') {
+                            isCorrect = userAnswers[i] === question.correct;
+                        } else if (question.type === 'fill') {
+                            isCorrect = userAnswers[i] && userAnswers[i].toLowerCase() === question.correctAnswer.toLowerCase();
+                        } else {
+                            isCorrect = userAnswers[i] === question.correctAnswer;
+                        }
+                        
+                        className += isCorrect ? ' answered' : ' wrong';
+                    } else {
+                        // قبل التصحيح
+                        className += ' answered';
+                    }
+                }
+                
+                dotsHTML += `<div class="${className}" onclick="goToQuestion(${i})">${i+1}</div>`;
+            }
+            
+            return `
+                <div class="progress-dots">
+                    ${dotsHTML}
+                </div>
+                <div style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                    <span style="display: inline-block; margin: 0 10px;">
+                        <div style="width: 15px; height: 15px; background: #e0e0e0; border-radius: 50%; display: inline-block; margin-left: 5px;"></div>
+                        لم يتم الإجابة
+                    </span>
+                    <span style="display: inline-block; margin: 0 10px;">
+                        <div style="width: 15px; height: 15px; background: #4caf50; border-radius: 50%; display: inline-block; margin-left: 5px;"></div>
+                        تمت الإجابة
+                    </span>
+                    ${testSubmitted ? `
+                        <span style="display: inline-block; margin: 0 10px;">
+                            <div style="width: 15px; height: 15px; background: #f44336; border-radius: 50%; display: inline-block; margin-left: 5px;"></div>
+                            إجابة خاطئة
+                        </span>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // اختيار إجابة MCQ
         function selectAnswer(answerIndex) {
             if (testSubmitted) return;
-            userAnswers[currentQuestion] = answerIndex;
+            userAnswers[currentQuestionIndex] = answerIndex;
             showQuestion();
+        }
+
+        // اختيار إجابة خيارات
+        function selectOptionAnswer(answer) {
+            if (testSubmitted) return;
+            userAnswers[currentQuestionIndex] = answer;
+            showQuestion();
+        }
+
+        // تحديث إجابة تعبئة
+        function updateFillAnswer(value) {
+            if (testSubmitted) return;
+            userAnswers[currentQuestionIndex] = value;
         }
 
         // تأكيد الإجابة
         function submitAnswer() {
-            if (userAnswers[currentQuestion] === -1) {
+            if (currentTest.questions[currentQuestionIndex].type === 'fill') {
+                const answerInput = document.getElementById('fill-answer');
+                if (answerInput) {
+                    userAnswers[currentQuestionIndex] = answerInput.value;
+                }
+            }
+            
+            if (userAnswers[currentQuestionIndex] === null || userAnswers[currentQuestionIndex] === '') {
                 alert('الرجاء اختيار إجابة قبل المتابعة');
                 return;
             }
             
-            if (currentQuestion < mcqQuestions.length - 1) {
-                currentQuestion++;
+            if (currentQuestionIndex < currentTest.questions.length - 1) {
+                currentQuestionIndex++;
                 showQuestion();
             } else {
                 testSubmitted = true;
@@ -996,8 +1469,8 @@
 
         // الانتقال للسؤال التالي
         function nextQuestion() {
-            if (currentQuestion < mcqQuestions.length - 1) {
-                currentQuestion++;
+            if (currentQuestionIndex < currentTest.questions.length - 1) {
+                currentQuestionIndex++;
                 showQuestion();
             } else {
                 showTestResults();
@@ -1006,24 +1479,30 @@
 
         // العودة للسؤال السابق
         function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
                 showQuestion();
             }
         }
 
         // الانتقال لسؤال محدد
         function goToQuestion(index) {
-            currentQuestion = index;
+            currentQuestionIndex = index;
             showQuestion();
         }
 
         // حساب الدرجة
         function calculateScore() {
             score = 0;
-            mcqQuestions.forEach((question, index) => {
-                if (userAnswers[index] === question.correct) {
-                    score++;
+            currentTest.questions.forEach((question, index) => {
+                if (userAnswers[index] !== null) {
+                    if (question.type === 'mcq') {
+                        if (userAnswers[index] === question.correct) score++;
+                    } else if (question.type === 'fill') {
+                        if (userAnswers[index] && userAnswers[index].toLowerCase() === question.correctAnswer.toLowerCase()) score++;
+                    } else {
+                        if (userAnswers[index] === question.correctAnswer) score++;
+                    }
                 }
             });
         }
@@ -1031,374 +1510,213 @@
         // عرض نتيجة الاختبار
         function showTestResults() {
             const modalBody = document.getElementById('modal-body');
-            const percentage = Math.round((score / mcqQuestions.length) * 100);
+            const totalQuestions = currentTest.questions.length;
+            const percentage = Math.round((score / totalQuestions) * 100);
             
             let resultMessage = '';
-            if (percentage >= 90) resultMessage = 'ممتاز! أداء رائع';
-            else if (percentage >= 80) resultMessage = 'جيد جداً! أحسنت';
-            else if (percentage >= 70) resultMessage = 'جيد! يمكنك التحسين';
-            else if (percentage >= 60) resultMessage = 'مقبول! تحتاج للمزيد من المذاكرة';
-            else resultMessage = 'ضعيف! يجب مراجعة المحتوى';
+            if (percentage >= 90) resultMessage = 'ممتاز! أداء رائع 👏';
+            else if (percentage >= 80) resultMessage = 'جيد جداً! أحسنت 👍';
+            else if (percentage >= 70) resultMessage = 'جيد! يمكنك التحسين 💪';
+            else if (percentage >= 60) resultMessage = 'مقبول! تحتاج للمزيد من المذاكرة 📚';
+            else resultMessage = 'ضعيف! يجب مراجعة المحتوى 🔄';
             
             modalBody.innerHTML = `
                 <div class="result-card">
-                    <h3 style="color: #1a237e; margin-bottom: 25px;">نتيجة اختبار MCQ</h3>
+                    <h3 style="color: #1a237e; margin-bottom: 25px;">نتيجة الاختبار</h3>
                     
                     <div class="score-circle">
                         <div class="score-percentage">${percentage}%</div>
-                        <div class="score-label">${score}/${mcqQuestions.length}</div>
+                        <div class="score-label">${score}/${totalQuestions}</div>
                     </div>
                     
                     <h4 style="color: #2e7d32; margin-bottom: 15px; font-size: 1.4rem;">${resultMessage}</h4>
                     
-                    <div class="result-details">
-                        <h4>تفاصيل النتيجة:</h4>
-                        
-                        ${mcqQuestions.map((question, index) => {
-                            const isCorrect = userAnswers[index] === question.correct;
-                            return `
-                                <div class="detail-item">
-                                    <div style="color: ${isCorrect ? '#2e7d32' : '#c62828'};">
-                                        ${isCorrect ? '✓' : '✗'} سؤال ${index + 1}
-                                    </div>
-                                    <div style="font-weight: ${isCorrect ? '600' : '400'}; color: ${isCorrect ? '#2e7d32' : '#c62828'}">
-                                        ${isCorrect ? 'صحيح' : 'خطأ'}
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
+                    <div style="margin-top: 30px;">
+                        <button class="control-btn" onclick="reviewTest()">
+                            <i class="fas fa-search"></i> مراجعة الإجابات
+                        </button>
+                        <button class="control-btn secondary" onclick="restartTest()">
+                            <i class="fas fa-redo"></i> إعادة الاختبار
+                        </button>
+                        ${currentSection !== 'final-exam' ? `
+                            <button class="control-btn" onclick="openSection('all-content')">
+                                <i class="fas fa-book"></i> مراجعة المحتوى
+                            </button>
+                        ` : ''}
                     </div>
-                </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn secondary" onclick="startMCQTest()">
-                        <i class="fas fa-redo"></i> إعادة الاختبار
-                    </button>
-                    <button class="control-btn" onclick="openSection('lecture-content')">
-                        <i class="fas fa-book"></i> مراجعة المحتوى
-                    </button>
-                    <button class="control-btn" onclick="closeModal()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
                 </div>
             `;
         }
 
-        // بدء تمرين التوصيل
-        function startMatchingExercise() {
-            matchedPairs = [];
-            const shuffledTerms = shuffleArray([...lectureTerms]);
-            const shuffledDefinitions = shuffleArray([...lectureTerms.map(term => ({
-                definition: term.definition,
-                arabicDefinition: term.arabicDefinition,
-                correctWord: term.word,
-                letter: term.letter
-            }))]);
-            
-            const modalBody = document.getElementById('modal-body');
-            
-            let wordsHTML = '';
-            let definitionsHTML = '';
-            
-            shuffledTerms.forEach((term, index) => {
-                const isMatched = matchedPairs.find(pair => pair.word === term.word);
-                wordsHTML += `
-                    <div class="matching-item ${isMatched ? 'matched' : ''}" 
-                         id="word-${index}" 
-                         draggable="true"
-                         ondragstart="dragWord(event, '${term.word}')"
-                         data-word="${term.word}">
-                        <h4>${term.word}</h4>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">الحرف: ${term.letter}</p>
-                    </div>
-                `;
-            });
-            
-            shuffledDefinitions.forEach((def, index) => {
-                const isMatched = matchedPairs.find(pair => pair.definition === def.definition);
-                definitionsHTML += `
-                    <div class="matching-item ${isMatched ? 'matched' : ''}" 
-                         id="def-${index}"
-                         ondragover="allowDrop(event)"
-                         ondrop="dropDefinition(event, '${def.correctWord}', '${def.definition}', '${def.letter}')">
-                        <h4>(${def.letter}) ${def.arabicDefinition}</h4>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">${def.definition.substring(0, 60)}...</p>
-                    </div>
-                `;
-            });
-            
-            modalBody.innerHTML = `
-                <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 1.1rem;">
-                    اسحب كل كلمة إلى تعريفها الصحيح. الكلمات: (${shuffledTerms.map(t => t.word).join(', ')})
-                </p>
-                
-                <div class="matching-container">
-                    <div class="matching-column">
-                        <h3>الكلمات</h3>
-                        ${wordsHTML}
-                    </div>
-                    
-                    <div class="matching-column">
-                        <h3>التعريفات</h3>
-                        ${definitionsHTML}
-                    </div>
-                </div>
-                
-                <div id="matching-result" class="matching-result" style="display: ${matchedPairs.length === lectureTerms.length ? 'block' : 'none'};">
-                    <h4>مبروك! لقد أكملت التمرين بنجاح</h4>
-                    <p>لقد وصلت جميع الكلمات مع تعاريفها الصحيحة</p>
-                </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn secondary" onclick="checkMatching()">
-                        <i class="fas fa-check-circle"></i> التحقق من الإجابات
-                    </button>
-                    <button class="control-btn" onclick="resetMatching()">
-                        <i class="fas fa-redo"></i> إعادة التمرين
-                    </button>
-                    <button class="control-btn" onclick="showMatchingSolutions()">
-                        <i class="fas fa-lightbulb"></i> عرض الحلول
-                    </button>
-                </div>
-            `;
+        // مراجعة الإجابات
+        function reviewTest() {
+            currentQuestionIndex = 0;
+            testSubmitted = true;
+            showQuestion();
         }
 
-        // سحب كلمة
-        function dragWord(event, word) {
-            event.dataTransfer.setData("text", word);
-            event.target.classList.add('dragging');
+        // إعادة الاختبار
+        function restartTest() {
+            startTest(currentSection.replace('-test', '').replace('-exam', ''));
         }
 
-        // السماح بالإسقاط
-        function allowDrop(event) {
-            event.preventDefault();
-        }
-
-        // إسقاط تعريف
-        function dropDefinition(event, correctWord, definition, letter) {
-            event.preventDefault();
-            const draggedWord = event.dataTransfer.getData("text");
-            
-            // التحقق من صحة المطابقة
-            if (draggedWord === correctWord) {
-                // إضافة للمطابقات الصحيحة
-                if (!matchedPairs.find(pair => pair.word === draggedWord)) {
-                    matchedPairs.push({
-                        word: draggedWord,
-                        definition: definition,
-                        letter: letter
-                    });
-                    
-                    // تحديث العناصر
-                    const wordElement = document.querySelector(`[data-word="${draggedWord}"]`);
-                    const defElement = event.target.closest('.matching-item');
-                    
-                    if (wordElement) wordElement.classList.add('matched');
-                    if (defElement) defElement.classList.add('matched');
-                    
-                    // التحقق من اكتمال التمرين
-                    if (matchedPairs.length === lectureTerms.length) {
-                        document.getElementById('matching-result').style.display = 'block';
-                    }
-                }
-            } else {
-                // إظهار رسالة خطأ
-                alert('✗ هذا التوصيل غير صحيح. حاول مرة أخرى.');
-            }
-            
-            // إزالة حالة السحب
-            document.querySelectorAll('.dragging').forEach(el => {
-                el.classList.remove('dragging');
-            });
-        }
-
-        // التحقق من التوصيل
-        function checkMatching() {
-            if (matchedPairs.length === lectureTerms.length) {
-                alert('✓ أحسنت! لقد وصلت جميع الكلمات بشكل صحيح.');
-            } else {
-                alert(`لقد وصلت ${matchedPairs.length} من أصل ${lectureTerms.length} كلمة بشكل صحيح. استمر في المحاولة!`);
-            }
-        }
-
-        // إعادة تعيين التمرين
-        function resetMatching() {
-            startMatchingExercise();
-        }
-
-        // عرض حلول التمرين
-        function showMatchingSolutions() {
-            const modalBody = document.getElementById('modal-body');
-            
-            let solutionsHTML = '';
-            lectureTerms.forEach(term => {
-                solutionsHTML += `
-                    <div class="term-item">
-                        <h4>${term.word} - (${term.letter})</h4>
-                        <p><strong>التعريف بالإنجليزية:</strong> ${term.definition}</p>
-                        <div class="term-definition">
-                            <strong>التعريف بالعربية:</strong> ${term.arabicDefinition}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            modalBody.innerHTML = `
-                <button class="control-btn secondary" style="margin-bottom: 20px;" onclick="startMatchingExercise()">
-                    <i class="fas fa-arrow-right"></i> العودة لتمرين التوصيل
-                </button>
-                
-                <h3 class="content-header">الحلول الكاملة لتمرين التوصيل</h3>
-                
-                <div class="content-container">
-                    <div class="terms-list">
-                        ${solutionsHTML}
-                    </div>
-                </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn" onclick="openSection('mcq-test')">
-                        <i class="fas fa-question-circle"></i> الانتقال لاختبار MCQ
-                    </button>
-                    <button class="control-btn" onclick="closeModal()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                </div>
-            `;
-        }
-
-        // عرض محتوى المحاضرة
-        function showLectureContent() {
-            const modalBody = document.getElementById('modal-body');
-            
-            let termsHTML = '';
-            lectureTerms.forEach(term => {
-                termsHTML += `
-                    <div class="term-item">
-                        <h4>${term.word} - (${term.letter})</h4>
-                        <p><strong>English Definition:</strong> ${term.definition}</p>
-                        <div class="term-definition">
-                            <strong>التعريف بالعربية:</strong> ${term.arabicDefinition}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            modalBody.innerHTML = `
-                <h3 class="content-header">المحاضرة الأولى - مصطلحات الأمن السيبراني</h3>
-                
-                <div class="content-container">
-                    <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 1.2rem;">
-                        الكلمات المطلوب حفظها وربطها مع التعريفات المناسبة:
-                    </p>
-                    
-                    <div class="terms-list">
-                        ${termsHTML}
-                    </div>
-                </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn" onclick="openSection('mcq-test')">
-                        <i class="fas fa-question-circle"></i> اختبر نفسك (MCQ)
-                    </button>
-                    <button class="control-btn" onclick="openSection('matching-exercise')">
-                        <i class="fas fa-random"></i> تمرين التوصيل
-                    </button>
-                    <button class="control-btn secondary" onclick="closeModal()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                </div>
-            `;
-        }
-
-        // عرض تقدم المذاكرة
-        function showProgress() {
-            const modalBody = document.getElementById('modal-body');
-            
-            // جلب التقدم من localStorage (إن وجد)
-            const savedScore = localStorage.getItem('cybersecurity_quiz_best_score') || 0;
-            const attempts = localStorage.getItem('cybersecurity_quiz_attempts') || 0;
-            
-            modalBody.innerHTML = `
-                <h3 class="content-header">تقدم المذاكرة</h3>
-                
-                <div class="content-container">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 30px;">
-                        <div style="background: white; border-radius: 15px; padding: 25px; text-align: center; border: 3px solid #4caf50;">
-                            <div style="font-size: 3rem; color: #4caf50; font-weight: 800;">${savedScore}%</div>
-                            <div style="color: #666; font-size: 1.2rem; margin-top: 10px;">أفضل نتيجة</div>
-                        </div>
-                        
-                        <div style="background: white; border-radius: 15px; padding: 25px; text-align: center; border: 3px solid #1a237e;">
-                            <div style="font-size: 3rem; color: #1a237e; font-weight: 800;">${attempts}</div>
-                            <div style="color: #666; font-size: 1.2rem; margin-top: 10px;">عدد المحاولات</div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; border-radius: 15px; padding: 25px; margin-bottom: 25px;">
-                        <h4 style="color: #1a237e; margin-bottom: 15px;">نصائح للتحسين:</h4>
-                        <ul style="text-align: right; color: #666; list-style-type: none; padding: 0;">
-                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
-                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
-                                راجع مصطلحات المحاضرة أولاً قبل الاختبار
-                            </li>
-                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
-                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
-                                قم بتمرين التوصيل عدة مرات حتى تتقن جميع المصطلحات
-                            </li>
-                            <li style="margin-bottom: 15px; padding-right: 25px; position: relative;">
-                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
-                                ركز على فهم التعريفات باللغتين العربية والإنجليزية
-                            </li>
-                            <li style="padding-right: 25px; position: relative;">
-                                <i class="fas fa-lightbulb" style="color: #4caf50; position: absolute; right: 0;"></i>
-                                اختبر نفسك بانتظام لتقييم تقدمك
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div style="background: #e8f5e9; border-radius: 15px; padding: 20px; text-align: center;">
-                        <h4 style="color: #2e7d32; margin-bottom: 10px;">المصطلحات التي يجب تركيز عليها:</h4>
-                        <p style="color: #666;">${lectureTerms.map(term => term.word).join(', ')}</p>
-                    </div>
-                </div>
-                
-                <div class="test-controls">
-                    <button class="control-btn" onclick="openSection('lecture-content')">
-                        <i class="fas fa-book"></i> مراجعة المحتوى
-                    </button>
-                    <button class="control-btn" onclick="openSection('mcq-test')">
-                        <i class="fas fa-question-circle"></i> بدء اختبار جديد
-                    </button>
-                    <button class="control-btn secondary" onclick="closeModal()">
-                        <i class="fas fa-times"></i> إغلاق
-                    </button>
-                </div>
-            `;
-        }
-
-
+        // إعادة تعيين الاختبار
         function resetTest() {
-            currentQuestion = 0;
+            currentQuestionIndex = 0;
             userAnswers = [];
             testSubmitted = false;
             score = 0;
-            matchedPairs = [];
         }
 
-        window.addEventListener('beforeunload', function() {
-            if (score > 0) {
-                const bestScore = localStorage.getItem('cybersecurity_quiz_best_score') || 0;
-                if (score > bestScore) {
-                    localStorage.setItem('cybersecurity_quiz_best_score', Math.round((score / mcqQuestions.length) * 100));
-                }
+        // عرض جميع المحتوى
+        function showAllContent() {
+            const modalBody = document.getElementById('modal-body');
+            
+            let contentHTML = `
+                <div class="content-container">
+                    <h3 class="content-header">جميع المحتوى التعليمي</h3>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">الوحدة الأولى: الهاردوير وزمن المضارع البسيط</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>مصطلحات الهاردوير:</h4>
+                                <p><strong>CPU:</strong> وحدة المعالجة المركزية (دماغ الكمبيوتر)</p>
+                                <p><strong>Motherboard:</strong> اللوحة الأم التي تربط جميع المكونات</p>
+                                <p><strong>RAM:</strong> ذاكرة الوصول العشوائي (مؤقتة)</p>
+                                <p><strong>HDD:</strong> قرص تخزين دائم</p>
+                                <p><strong>Peripherals:</strong> الأجهزة الطرفية (فأرة، لوحة مفاتيح، شاشة)</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>زمن المضارع البسيط:</h4>
+                                <p>I/You/We/They + فعل (بدون إضافة)</p>
+                                <p>He/She/It + فعل + s</p>
+                                <p><strong>أمثلة:</strong> The CPU processes data. IT specialists fix problems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">الوحدة الثانية: البرمجيات والمقارنات</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>أنواع البرمجيات:</h4>
+                                <p><strong>System Software:</strong> نظام التشغيل (Windows, Linux, macOS)</p>
+                                <p><strong>Application Software:</strong> برامج التطبيقات (Word, Browser)</p>
+                                <p><strong>Malware:</strong> برمجيات خبيثة (فيروسات، ديدان)</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>المقارنات والتفضيل:</h4>
+                                <p><strong>Comparatives (مقارنة بين شيئين):</strong> faster than, more secure than</p>
+                                <p><strong>Superlatives (تفضيل في مجموعة):</strong> the fastest, the most secure</p>
+                                <p><strong>أمثلة:</strong> SSD is faster than HDD. This is the fastest processor.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">الوحدة الثالثة: الشبكات وزمن الماضي</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>مصطلحات الشبكات:</h4>
+                                <p><strong>LAN:</strong> شبكة محلية (مكتب، منزل)</p>
+                                <p><strong>WAN:</strong> شبكة واسعة (الإنترنت)</p>
+                                <p><strong>IP Address:</strong> عنوان يحدد الجهاز على الشبكة</p>
+                                <p><strong>Router:</strong> يوجه حركة المرور بين الشبكات</p>
+                                <p><strong>Firewall:</strong> يمنع الوصول غير المصرح به</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>زمن الماضي البسيط:</h4>
+                                <p>فعل + ed (للأفعال المنتظمة)</p>
+                                <p>أفعال غير منتظمة (write → wrote, send → sent)</p>
+                                <p><strong>أمثلة:</strong> He wrote a script. We connected the printer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">القواعد: أدوات التعريف والنكرة</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>أدوات النكرة a / an:</h4>
+                                <p><strong>a:</strong> قبل الأسماء التي تبدأ بحرف ساكن (a computer)</p>
+                                <p><strong>an:</strong> قبل الأسماء التي تبدأ بحرف متحرك (an engineer)</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>أداة التعريف the:</h4>
+                                <p>تستخدم قبل الأسماء المعرفة أو الفريدة (the Internet, the United States)</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>جمع الأسماء:</h4>
+                                <p><strong>قاعدة:</strong> book → books</p>
+                                <p><strong>s, x, sh, ch:</strong> bus → buses, box → boxes</p>
+                                <p><strong>y بعد ساكن:</strong> city → cities</p>
+                                <p><strong>y بعد متحرك:</strong> boy → boys</p>
+                                <p><strong>شاذ:</strong> man → men, child → children</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">المفردات: المرادفات والمتضادات</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>المرادفات (Synonyms):</h4>
+                                <p>Vulnerability = Weakness</p>
+                                <p>Malware = Malicious Software</p>
+                                <p>Breach = Intrusion</p>
+                                <p>Authorization = Permission</p>
+                                <p>Encryption = Encoding</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>المتضادات (Antonyms):</h4>
+                                <p>Encryption × Decryption</p>
+                                <p>Authorized × Unauthorized</p>
+                                <p>Secure × Vulnerable</p>
+                                <p>Malicious × Benign</p>
+                                <p>Whitelist × Blacklist</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #1a237e; margin-bottom: 15px;">الأفعال في الأمن السيبراني</h4>
+                        <div class="terms-list">
+                            <div class="term-item">
+                                <h4>أفعال منتظمة:</h4>
+                                <p>Encrypt → Encrypted</p>
+                                <p>Authenticate → Authenticated</p>
+                                <p>Patch → Patched</p>
+                                <p>Breach → Breached</p>
+                                <p>Configure → Configured</p>
+                            </div>
+                            <div class="term-item">
+                                <h4>أفعال غير منتظمة:</h4>
+                                <p>Set up → Set up</p>
+                                <p>Send → Sent</p>
+                                <p>Build → Built</p>
+                                <p>Write → Wrote</p>
+                                <p>Find → Found</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                const attempts = parseInt(localStorage.getItem('cybersecurity_quiz_attempts') || 0);
-                localStorage.setItem('cybersecurity_quiz_attempts', attempts + 1);
-            }
-        });
+                <div class="test-controls">
+                    <button class="control-btn" onclick="openSection('final-exam')">
+                        <i class="fas fa-graduation-cap"></i> بدء الامتحان النهائي
+                    </button>
+                    <button class="control-btn secondary" onclick="closeModal()">
+                        <i class="fas fa-times"></i> إغلاق
+                    </button>
+                </div>
+            `;
+            
+            modalBody.innerHTML = contentHTML;
+        }
 
-
+        window.onload = function() {
+        };
     </script>
 </body>
 </html>
